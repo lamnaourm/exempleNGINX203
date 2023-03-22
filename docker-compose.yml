@@ -1,0 +1,20 @@
+version: '3'
+services:
+  serv1:
+    build: ./serviceA
+    ports:
+      - 3000:3000
+  serv2:
+    build: ./serviceB
+    ports:
+      - 3001:3000
+  serv3:
+    build: ./serviceC
+    ports:
+      - 3002:3000
+  gateway:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - "./gateway/api.conf:/etc/nginx/conf.d/default.conf"
